@@ -1,1 +1,1 @@
-# Simple React Project 1
+# Simple React Projects
