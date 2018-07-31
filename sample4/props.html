@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Simple React Project 2 - Components</title>
+</head>
+<body>
+	<style>
+		.red {
+			color: #ff0;
+		}
+	</style>
+
+	<div id="app"></div>
+
+<script src="https://unpkg.com/react@latest/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+<script type="text/babel">
+
+	//'use strict'; // don't need coz babel adds it automatically
+	
+	const myNews = [
+		{
+			id: 1,
+			author: 'Brad Conelly',
+			text: 'Some text of Brad'
+		},
+		{
+			id: 2,
+			author: 'Sam Worrington',
+			text: 'Some text of Sam'
+		},
+		{
+			id: 3,
+			author: 'Pete Brooks',
+			text: 'Some text of Pete'
+		},
+		{
+			id: 4,
+			author: 'Liza March',
+			text: 'Some text of Liza'
+		},
+	];
+
+	const { Component, Fragment } = React;
+
+	const Comments = () => {
+		return <p>Some comments here</p>
+	}
+
+	class News extends Component {
+		render() {
+
+			const newsTemplate = this.props.latestNews.map(function(item, index) {
+				return (
+					<div key={ item.id }> {/* It's better than index! */}
+						<p className="news__author">{ item.author }:</p>
+						<p className="news__text">{ item.text }</p>
+					</div>
+				);
+			})
+
+			console.log(newsTemplate);
+
+			return (
+				<div className="news">
+					{ newsTemplate }
+				</div>
+			);
+		}
+	}
+
+	const App = () => {
+		return (
+			<Fragment>
+				<News latestNews={myNews} /> {/* added property of data */}
+				<Comments />
+			</Fragment>
+		)
+	}
+
+
+	ReactDOM.render(
+		<App />,
+		document.querySelector('#app')
+	);
+</script>
+</body>
+</html>
