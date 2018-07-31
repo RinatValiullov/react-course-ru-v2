@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Simple React Project 2 - Components</title>
+</head>
+<body>
+	<style>
+		.red {
+			color: #ff0;
+		}
+	</style>
+
+	<div id="app"></div>
+
+<script src="https://unpkg.com/react@latest/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+<script type="text/babel">
+
+	const { Component, Fragment } = React;
+
+	const Comments = () => {
+		return <p>Some comments here</p>
+	}
+
+	const News = () => {
+		return <p>Some fresh news!</p>
+	}
+
+	const App = () => {
+		return (
+			<Fragment>
+				<News />
+				<Comments />
+			</Fragment>
+		)
+	}
+
+
+/*	class BigApp extends Component {
+		render() {
+			return (
+				<Fragment>
+					<h1>I am BigApp component</h1>
+					<p className="red">Nested component with styles</p>
+					<App />
+					<News />
+				</Fragment>
+			);
+		}
+	}
+*/
+
+	ReactDOM.render(
+		<App />,
+		document.querySelector('#app')
+	);
+</script>
+</body>
+</html>
